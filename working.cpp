@@ -5,9 +5,10 @@
 SoftwareSerial RFID(2, 3); // RX and TX
 int i;
 
-char inData[50]; // Allocate some space for the string
+char inData[90]; // Allocate some space for the string
 char inChar; // Where to store the character read
 byte index = 0; // Index into array; where to store the character
+//byte index2 
 
 void setup()
 {
@@ -24,13 +25,13 @@ void loop()
         Serial.print(i, DEC);
     }*/
     
-    if (RFID.available() > 0) 
+    if(RFID.available() > 0) 
     {
         inChar = RFID.read();
         inData[index] = inChar; // Store it
         index++; // Increment where to write next
         inData[index] = '\0'; // Null terminate the string
-        Serial.print(inChar, DEC);
+        Serial.print(inData);
     }
     
     /*while(Serial.available() > 0) // Don't read unless there is data
