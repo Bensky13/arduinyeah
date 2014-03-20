@@ -1,10 +1,14 @@
 
 #include <SoftwareSerial.h>
 #include <LiquidCrystal.h>
-#include <string>
 LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
 int i;
+
+char inData[20]; // Allocate some space for the string
+char inChar; // Where to store the character read
+byte index = 0; // Index into array; where to store the character
+
 void setup()
 {
     RFID.begin(9600); // start serial to RFID reader
@@ -19,6 +23,17 @@ void loop()
         i = RFID.read();
         Serial.print(i, DEC);
         Serial.print(" ");
+    }
+    
+    while(Serial.available() > 0) // Don't read unless there is data
+    {
+       if(index < 19) // One less than the size of the array
+       {
+           inChar = Serial.read(); // Read a character
+           inData[index] = inChar; // Store it
+           index++; // Increment where to write next
+           inData[index] = '\0'; // Null terminate the string
+       }
     }
 }
 
