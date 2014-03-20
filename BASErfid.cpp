@@ -1,11 +1,14 @@
 
 #include <SoftwareSerial.h>
+#include <LiquidCrystal.h>
 SoftwareSerial RFID(2, 3); // RX and TX
+#include <LiquidCrystal.h>
 int i;
 void setup()
 {
     RFID.begin(9600); // start serial to RFID reader
-    Serial.begin(9600); // start serial to PC 
+    Serial.begin(9600); // start serial to PC
+    lcd.print("hello, world!");
 }
 
 void loop()
