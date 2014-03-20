@@ -1,6 +1,7 @@
 
 #include <SoftwareSerial.h>
 #include <LiquidCrystal.h>
+#include <string>
 LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
 int i;
