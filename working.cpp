@@ -25,14 +25,16 @@ void loop()
         Serial.print(i, DEC);
     }*/
     
-    if(RFID.available() > 0) 
+    if(RFID.available() > 0) //does rfid exist?
     {
-        inChar = RFID.read();
-        inData[index] = inChar; // Store it
-        index++; // Increment where to write next
+        inChar = RFID.read();   //take the data pulled from RFID and set it to "in
+        inData[index] = inChar; // takes the data that was just stored, and puts it in the array
+        index++; // increments to the next row in the array
         inData[index] = '\0'; // Null terminate the string
-        Serial.print(inData);
+        Serial.print(inData);   //prints out the array
     }
+    
+    //the adding of the array may need to be external to this read loop, otherwise it could be overwriting it. 
     
     /*while(Serial.available() > 0) // Don't read unless there is data
     {
