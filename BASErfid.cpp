@@ -2,7 +2,6 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal.h>
 SoftwareSerial RFID(2, 3); // RX and TX
-#include <LiquidCrystal.h>
 int i;
 void setup()
 {
