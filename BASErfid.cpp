@@ -19,4 +19,6 @@ void loop()
 }
 
 
-//test
+//we need code to output this to the LCD
+
+//We need code to store the tag info in an array
