@@ -1,6 +1,6 @@
 
 #include <SoftwareSerial.h>
-#include <LiquidCrystal.h>
+//#include <LiquidCrystal.h>
 //LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
 int i;
@@ -18,13 +18,22 @@ void setup()
 
 void loop()
 {
-    if (RFID.available() > 0) 
+    /*if (RFID.available() > 0) 
     {
         i = RFID.read();
         Serial.print(i, DEC);
+    }*/
+    
+    if (RFID.available() > 0) 
+    {
+        inChar = RFID.read();
+        inData[index] = inChar; // Store it
+        index++; // Increment where to write next
+        inData[index] = '\0'; // Null terminate the string
+        Serial.print(inChar, DEC);
     }
     
-    while(Serial.available() > 0) // Don't read unless there is data
+    /*while(Serial.available() > 0) // Don't read unless there is data
     {
        if(index < 49) // One less than the size of the array
        {
@@ -33,7 +42,7 @@ void loop()
            index++; // Increment where to write next
            inData[index] = '\0'; // Null terminate the string
        }
-    }
+    }*/
 }
 
 
