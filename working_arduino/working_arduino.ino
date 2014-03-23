@@ -3,12 +3,12 @@
 //#include <LiquidCrystal.h>
 //LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
-int i;
 
-char inData[90]; // Allocate some space for the string
-char inChar; // Where to store the character read
-byte index = 0; // Index into array; where to store the character
-//byte index2 
+int i;
+char tag_num_array[5][90]; // Allocate some space for the string
+char tag_id; // Where to store the character read
+char row = 0; // Index into array; where to store the character
+char column = 0;
 
 void setup()
 {
@@ -27,25 +27,16 @@ void loop()
     
     if(RFID.available() > 0) //does rfid exist?
     {
-        inChar = RFID.read();   //take the data pulled from RFID and set it to "in
-        inData[index] = inChar; // takes the data that was just stored, and puts it in the array
-        index++; // increments to the next row in the array
-        inData[index] = '\0'; // Null terminate the string
-        Serial.print(inData);   //prints out the array
+        tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
+        tag_num_array[row][column] = tag_id; // takes the data that was just stored, and puts it in the array
+        column++;
+        tag_num_array[row][column] = '\0'; // Null terminate the string
+        row++; // increments to the next row in the array
+        Serial.print(tag_num_array[index][index2]);   //prints out the array
     }
     
     //the adding of the array may need to be external to this read loop, otherwise it could be overwriting it. 
     
-    /*while(Serial.available() > 0) // Don't read unless there is data
-    {
-       if(index < 49) // One less than the size of the array
-       {
-           inChar = Serial.read(); // Read a character
-           inData[index] = inChar; // Store it
-           index++; // Increment where to write next
-           inData[index] = '\0'; // Null terminate the string
-       }
-    }*/
 }
 
 

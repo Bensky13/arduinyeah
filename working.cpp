@@ -7,8 +7,8 @@ int i;
 
 char tag_num_array[90]; // Allocate some space for the string
 char tag_id; // Where to store the character read
-byte index = 0; // Index into array; where to store the character
-//byte index2 
+char index = 0; // Index into array; where to store the character
+char index2 =0;
 
 void setup()
 {
@@ -35,17 +35,7 @@ void loop()
     }
     
     //the adding of the array may need to be external to this read loop, otherwise it could be overwriting it. 
-    
-    /*while(Serial.available() > 0) // Don't read unless there is data
-    {
-       if(index < 49) // One less than the size of the array
-       {
-           tag_id = Serial.read(); // Read a character
-           tag_num_array[index] = tag_id; // Store it
-           index++; // Increment where to write next
-           tag_num_array[index] = '\0'; // Null terminate the string
-       }
-    }*/
+
 }
 
 
