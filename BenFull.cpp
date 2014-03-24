@@ -35,32 +35,34 @@ void loop()
     */
     if(RFID.available() > 0) //does rfid exist?
     {
-      tag_id = RFID.read();
-      bytesRead ++; // we be reading 
-      id_string += tag_id;
+      tag_id = RFID.read(); //Reads character, puts into tag_id
+      bytesRead ++; // increments the number of total characters read
+      id_string += tag_id; //adds each character (ultimately, the whole tag) to id_string
       //Serial.print(tag_id);
       
       //check for the end of the RFID
-      if (bytesRead >= 14)
+      if (bytesRead >= 14) //if the number of bytes is greater or equal to 14, then
       {
         //Serial.println(" ");
-        Serial.println(id_string);
-        Serial.println("Finished Reading ID.");
-        Serial.println(" ");
-        id_array[index] = id_string;
-        index ++;
+        //Serial.println(id_string);
+        
+        Serial.println(" "); // prints a space
+        id_array[index] = id_string; // adds string to the array, to the "index" position (default 0)
+        Serial.println(id_array[index]); // print the array item
+        Serial.println("Finished Reading ID."); //prints out this on a line
+        index ++; // move to the next position in the array
         
         //for (int count = 0; )
         
-        space_left = 5 - index;
+        space_left = 5 - index; // start with 5 spaces, subtract one space for each place in the index, and set it to "space_left"
         
-        Serial.print("There are ");
-        Serial.print(space_left);
-        Serial.print(" spaces left.");
-        Serial.println(" ");
+        Serial.print("There are "); //start printing the result
+        Serial.print(space_left); //then how many spaces
+        Serial.print(" spaces left."); //words
+        Serial.println(" "); //spaces
         
-        bytesRead = 0;
-        id_string = "";
+        bytesRead = 0; // reset variable to zero so it can read again
+        id_string = ""; //clear out the string
         
       }
       
