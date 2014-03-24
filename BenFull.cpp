@@ -3,10 +3,13 @@
 //#include <LiquidCrystal.h>
 //LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
-int i;
+
+int i = 0;
+int bytesRead = 0;
 
 char tag_num_array[90]; // Allocate some space for the string
 char tag_id; // Where to store the character read
+String id_string;
 byte index = 0; // Index into array; where to store the character
 //byte index2 
 
@@ -15,6 +18,7 @@ void setup()
     RFID.begin(9600); // start serial to RFID reader
     Serial.begin(9600); // start serial to PC
     //lcd.print("hello, world!");
+    Serial.println("Ready!");
 }
 
 void loop()
@@ -27,14 +31,26 @@ void loop()
         Serial.print(i);
     }
     */
-   
     if(RFID.available() > 0) //does rfid exist?
     {
-        tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
+      tag_id = RFID.read();
+      bytesRead ++; // we be reading 
+      Serial.print(tag_id);
+      
+      //check for the end of the RFID
+      if (bytesRead >= 14)
+      {
+        Serial.println(" ");
+        Serial.println("Finished Reading ID.");
+        Serial.println(" ");
+        bytesRead = 0;
+      }
+      
+        //tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
         //tag_num_array[index] = tag_id; // takes the data that was just stored, and puts it in the array
         //index++; // increments to the next row in the array
         //tag_num_array[index] = '\0'; // Null terminate the string
-        Serial.print(tag_id);
+        //Serial.print(tag_id);
         //Serial.print(" ");
         //Serial.print(index);
         
