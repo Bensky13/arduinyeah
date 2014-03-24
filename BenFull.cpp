@@ -19,20 +19,29 @@ void setup()
 
 void loop()
 {
-    /*if (RFID.available() > 0) 
+    /*
+    if (RFID.available() > 0) 
     {
         i = RFID.read();
-        Serial.print(i, DEC);
-    }*/
-    
+        //Serial.print(i, DEC);
+        Serial.print(i);
+    }
+    */
+   
     if(RFID.available() > 0) //does rfid exist?
     {
         tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
-        tag_num_array[index] = tag_id; // takes the data that was just stored, and puts it in the array
-        index++; // increments to the next row in the array
-        tag_num_array[index] = '\0'; // Null terminate the string
-        //Serial.print(tag_num_array);   //prints out the array
+        //tag_num_array[index] = tag_id; // takes the data that was just stored, and puts it in the array
+        //index++; // increments to the next row in the array
+        //tag_num_array[index] = '\0'; // Null terminate the string
         Serial.print(tag_id);
+        //Serial.print(" ");
+        //Serial.print(index);
+        
+       
+        //Serial.print(tag_num_array);   //prints out the array
+        //Serial.print(tag_id);
+        //Serial.print(index);
     }
     
     //the adding of the array may need to be external to this read loop, otherwise it could be overwriting it. 
