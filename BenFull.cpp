@@ -4,14 +4,16 @@
 //LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
 
-int i = 0;
+//int i = 0;
 int bytesRead = 0;
 
-char tag_num_array[90]; // Allocate some space for the string
 char tag_id; // Where to store the character read
-String id_string;
+String id_string = "";
+String id_array[5];
 byte index = 0; // Index into array; where to store the character
 //byte index2 
+
+int space_left = 5;
 
 void setup()
 {
@@ -35,15 +37,31 @@ void loop()
     {
       tag_id = RFID.read();
       bytesRead ++; // we be reading 
-      Serial.print(tag_id);
+      id_string += tag_id;
+      //Serial.print(tag_id);
       
       //check for the end of the RFID
       if (bytesRead >= 14)
       {
-        Serial.println(" ");
+        //Serial.println(" ");
+        Serial.println(id_string);
         Serial.println("Finished Reading ID.");
         Serial.println(" ");
+        id_array[index] = id_string;
+        index ++;
+        
+        //for (int count = 0; )
+        
+        space_left = 5 - index;
+        
+        Serial.print("There are ");
+        Serial.print(space_left);
+        Serial.print(" spaces left.");
+        Serial.println(" ");
+        
         bytesRead = 0;
+        id_string = "";
+        
       }
       
         //tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
