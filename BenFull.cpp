@@ -1,3 +1,8 @@
+// 3/23/14 To Do next:
+// Print out full list of tags in the array?
+// Start working on maths for checking if tag is currently in the array
+
+
 
 #include <SoftwareSerial.h>
 //#include <LiquidCrystal.h>
