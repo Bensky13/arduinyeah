@@ -60,12 +60,12 @@ void loop()
         
         if (id_array[index] == previous_id_array[index])
         {
-            space_left += 1;
+            space_left++;
             previous_id_array[index] = "";
         }
         else
         {
-            space_left -= 1;
+            space_left--;
         }  
                 
                 
