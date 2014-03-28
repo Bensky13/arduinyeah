@@ -16,7 +16,8 @@ char tag_id; // Where to store the character read
 String id_string = "";
 String id_array[5];
 byte index = 0; // Index into array; where to store the character
-String previous_id_array[5];
+int no_match = 0;
+//byte index2 
 
 int space_left = 5;
 
@@ -30,20 +31,14 @@ void setup()
 
 void loop()
 {
-    /*
-    if (RFID.available() > 0) 
-    {
-        i = RFID.read();
-        //Serial.print(i, DEC);
-        Serial.print(i);
-    }
-    */
+
     if(RFID.available() > 0) //does rfid exist?
     {
       tag_id = RFID.read(); //Reads character, puts into tag_id
       bytesRead ++; // increments the number of total characters read
       id_string += tag_id; //adds each character (ultimately, the whole tag) to id_string
-      //Serial.print(tag_id);
+      id_array[index] = id_string;
+      
       
       //check for the end of the RFID
       if (bytesRead >= 14) //if the number of bytes is greater or equal to 14, then
@@ -51,51 +46,46 @@ void loop()
         //Serial.println(" ");
         //Serial.println(id_string);
         
-        Serial.println(" "); // prints a space
-        id_array[index] = id_string; // adds string to the array, to the "index" position (default 0)
         
+        
+        for(int i=0; i<5; i++)
+        {
+           if(id_array[index] == id_array[i])
+           {
+              space_left++;
+              id_array[i] = "";
+              i = index;
+              no_match = 1;
+              //break;
+           }
+
+        }
+        
+         if (no_match == 0)
+           {
+             space_left--;
+              // adds string to the array, to the "index" position (default 0)
+             index ++; // move to the next position in the array
+           }
+
+          }
+        
+                
+        
+        Serial.println(" "); // prints a space
         Serial.println(id_array[index]); // print the array item
         Serial.println("Finished Reading ID."); //prints out this on a line
-        index++;
-        
-        if (id_array[index] == previous_id_array[index])
-        {
-            space_left++;
-        }
-        else
-        {
-            space_left--;
-        }  
-                
-                
         Serial.print("There are "); //start printing the result
         Serial.print(space_left); //then how many spaces
         Serial.print(" spaces left."); //words
         Serial.println(" "); //spaces
         
         bytesRead = 0; // reset variable to zero so it can read again
+        no_match = 0;
         id_string = ""; //clear out the string
-        id_array[index] = previous_id_array[index];
         
       }
       
-        //tag_id = RFID.read();   //take the data pulled from RFID and set it to "in
-        //tag_num_array[index] = tag_id; // takes the data that was just stored, and puts it in the array
-        //index++; // increments to the next row in the array
-        //tag_num_array[index] = '\0'; // Null terminate the string
-        //Serial.print(tag_id);
-        //Serial.print(" ");
-        //Serial.print(index);
-        
-       
-        //Serial.print(tag_num_array);   //prints out the array
-        //Serial.print(tag_id);
-        //Serial.print(index);
-    }
-    
-    //the adding of the array may need to be external to this read loop, otherwise it could be overwriting it. 
-    
-
 }
 
 
