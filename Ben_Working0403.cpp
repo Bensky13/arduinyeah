@@ -62,9 +62,15 @@ void loop()
         i++; 
       }
       
+      
+      /*
       //TESTING OUTPUT
       Serial.print("\nid_string is now ");
       Serial.print(id_string);
+      
+      //Commenting this out, as it seems redundant to above code.
+      
+      */
 
       
       //id_string += tag_id; //adds each character (ultimately, the whole tag) to id_string
