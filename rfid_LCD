@@ -17,17 +17,15 @@ void setup()
     RFID.begin(9600); // start serial to RFID reader
     Serial.begin(9600); // start serial to PC
     lcd.begin(16, 2);
-    
-    //lcd.print("hello, world!");
+    //lcd.print("Ready!");
     
     for (int i = 0; i < 5; i++)
        id_marker[i] = 0;
     
     Serial.println("Ready!");
      
-     
-  // Print a message to the LCD.
-  lcd.print("Ready!");
+  
+ 
   
 }
 
