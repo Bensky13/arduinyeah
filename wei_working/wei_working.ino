@@ -86,9 +86,7 @@ void loop()
              
                if (id_marker[i] == 1);
                else
-               {
-                  space_left++;
-                
+               {              
                   for (int j = i; j < 4; j++)
                   {
                      id_string[j] = id_string[j + 1];
