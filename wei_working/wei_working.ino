@@ -1,7 +1,7 @@
 
 #include <SoftwareSerial.h>
-//#include <LiquidCrystal.h>
-//LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 SoftwareSerial RFID(2, 3); // RX and TX
 
 char tag_id;
@@ -17,7 +17,7 @@ void setup()
 {
     RFID.begin(9600); // start serial to RFID reader
     Serial.begin(9600); // start serial to PC
-    
+    lcd.begin(16, 2);
     //lcd.print("hello, world!");
     
     for (int i = 0; i < 5; i++)
