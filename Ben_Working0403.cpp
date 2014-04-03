@@ -54,6 +54,8 @@ void loop()
         bytesRead ++;
       
         //TESTING OUTPUT
+        
+        //For some reason, getting rid of this makes the tag not read correctly 
         Serial.print("Read:  "); 
         Serial.print(tag_id);
         Serial.print("\nid_string is now "); 
@@ -63,14 +65,14 @@ void loop()
       }
       
       
-      /*
+      
       //TESTING OUTPUT
       Serial.print("\nid_string is now ");
       Serial.print(id_string);
       
       //Commenting this out, as it seems redundant to above code.
       
-      */
+      
 
       
       //id_string += tag_id; //adds each character (ultimately, the whole tag) to id_string
