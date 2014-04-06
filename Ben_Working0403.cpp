@@ -160,8 +160,8 @@ void loop()
               Serial.print(i);
               Serial.print("] = ");
               Serial.print(id_array[i]);
-              Serial.print("\nid_string is ");
-              Serial.print(id_string);
+              //Serial.print("\nid_string is ");
+              //Serial.print(id_string);
             
         }
         
