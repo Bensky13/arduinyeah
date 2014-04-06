@@ -70,7 +70,7 @@ void loop()
       Serial.print("\nid_string is now ");
       Serial.print(id_string);
       
-      //Commenting this out, as it seems redundant to above code.
+      
       
       
 
@@ -91,18 +91,22 @@ void loop()
               Serial.print("\nid_string is ");
               Serial.print(id_string);
               
-           if(id_string == id_array[i])
+           if(id_string == id_array[i]) //if the id matches something in the array at location "i"
            {
-               Serial.println("Match");
+               Serial.println("Match"); //print that it matches.
+               
+               
              
-               if (id_marker[i] == 1);
-               else
+               if (id_marker[i] == 1);  //if the id marker is equal to one
+               else //SHOULD THIS ACTUALLY BE ELSE?
                {
-                  space_left++;
+                  space_left++; //this isnt properly increasing the spaces left
+                  
+                  
                 
                   for (int j = i; j < 4; j++)
                   {
-                     id_string[j] = id_string[j + 1];
+                     id_string[j] = id_string[j + 1]; 
                      id_marker[j] = id_marker[j + 1];
                   }
                   
