@@ -84,8 +84,9 @@ void loop()
         for(int i=0; i<5; i++)
         {
             
-            /*
-            
+        
+        /*
+            //Moved to the land down under
               //TEST OUTPUT: DISPLAY ARRAY
               Serial.print("\nid_array[");
               Serial.print(i);
@@ -93,6 +94,7 @@ void loop()
               Serial.print(id_array[i]);
               Serial.print("\nid_string is ");
               Serial.print(id_string);
+            //This should ultimately be after the final read/print action so we can get relevant data
             
             */
               
@@ -111,7 +113,7 @@ void loop()
                   //where does it get removed from the array if its a dup?
                   
                 
-                  for (int j = i; j < 4; j++)
+                  for (int j = i; j < 4; j++)   //what purpose does j serve? Increments the search?
                   {
                      id_string[j] = id_string[j + 1]; 
                      id_marker[j] = id_marker[j + 1];
@@ -147,6 +149,21 @@ void loop()
         Serial.print(space_left); //then how many spaces
         Serial.print(" spaces left."); //words
         Serial.println(" "); //spaces
+        
+        for(int i=0; i<5; i++)
+        {
+            
+            
+            
+              //TEST OUTPUT: DISPLAY ARRAY. I put this here because its more accurate
+              Serial.print("\nid_array[");
+              Serial.print(i);
+              Serial.print("] = ");
+              Serial.print(id_array[i]);
+              Serial.print("\nid_string is ");
+              Serial.print(id_string);
+            
+        }
         
         bytesRead = 0; // reset variable to zero so it can read again
         no_match = 0; 
