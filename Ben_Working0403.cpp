@@ -83,6 +83,9 @@ void loop()
         
         for(int i=0; i<5; i++)
         {
+            
+            /*
+            
               //TEST OUTPUT: DISPLAY ARRAY
               Serial.print("\nid_array[");
               Serial.print(i);
@@ -90,6 +93,8 @@ void loop()
               Serial.print(id_array[i]);
               Serial.print("\nid_string is ");
               Serial.print(id_string);
+            
+            */
               
            if(id_string == id_array[i]) //if the id matches something in the array at location "i"
            {
@@ -98,10 +103,12 @@ void loop()
                
              
                if (id_marker[i] == 1);  //if the id marker is equal to one
-               else //SHOULD THIS ACTUALLY BE ELSE?
+               //else //Removing this else because I dont think it makes sense. 
                {
-                  space_left++; //this isnt properly increasing the spaces left
+                 // space_left++; //this isnt properly increasing the spaces left
+                  //Commented out space left above because theres also one below.
                   
+                  //where does it get removed from the array if its a dup?
                   
                 
                   for (int j = i; j < 4; j++)
