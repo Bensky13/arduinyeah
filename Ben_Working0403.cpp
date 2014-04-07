@@ -105,6 +105,7 @@ void loop()
            if(id_string == id_array[i]) //if the id matches something in the array at location "i"
            {
                Serial.println("Match"); //print that it matches.
+               id_array[i] = "";    //set the array location of the removed tag to blank
                
                
              
@@ -136,8 +137,23 @@ void loop()
         }//End of for loop
         
         
+        
+        
+        
          if (no_match == 0)
          {
+            
+            if (id_array[index] != "");   //if the array location is not blank, then
+        {
+            index ++;   //increment to the next spot
+        }
+        
+        if (i == 5);  //if we're at the 5th spot
+        {
+            i == 0; //start back at zero
+        }
+            
+             //this needs to be able to detect black values
              id_array[index] = id_string;
              id_marker[index]++;
       
