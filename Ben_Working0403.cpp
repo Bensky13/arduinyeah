@@ -139,9 +139,13 @@ void loop()
         
         
         
-        
+        //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
          if (no_match == 0)
+
+       
          {
+            
+            /*
             
             if (id_array[index] != "");   //if the array location is not blank, then
         {
@@ -152,6 +156,8 @@ void loop()
         {
             i == 0; //start back at zero
         }
+        
+        */
             
              //this needs to be able to detect black values
              id_array[index] = id_string;
