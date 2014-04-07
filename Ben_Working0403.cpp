@@ -29,6 +29,10 @@ void setup()
   
 }
 
+
+//It's always overwriting the second value in the array
+
+
 void loop()
 {
     int i;
@@ -112,14 +116,17 @@ void loop()
                   
                   //where does it get removed from the array if its a dup?
                   
-                
+                /* Removed on 4/6 because I cant detect why this is necessary. 
                   for (int j = i; j < 4; j++)   //what purpose does j serve? Increments the search?
                   {
                      id_string[j] = id_string[j + 1]; 
                      id_marker[j] = id_marker[j + 1];
+                     Serial.println(id_marker[i]);  //test print for the current marker. 
                   }
                   
-                  index--;
+                  */
+                  
+                  index--;  //this might actually only subtract the last place, and not the proper location
                   space_left++;
                   no_match = 1;
                 }
