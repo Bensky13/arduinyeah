@@ -1,7 +1,9 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+//LiquidCrystal lcd(12, 11, 7, 5, 4, 3); //Testing code for pin switch
 SoftwareSerial RFID(2, 3); // RX and TX
+//SoftwareSerial RFID(8, 2); // Testing code for pin switch
 
 char tag_id;
 String id_string = "";
@@ -17,7 +19,7 @@ void setup()
     RFID.begin(9600); // start serial to RFID reader
     Serial.begin(9600); // start serial to PC
     //lcd.begin(16, 2);
-    //lcd.print("Ready!");
+    //lcd.print("Ready!");  //test code for the LCD
     
     for (int i = 0; i < 5; i++)
        id_marker[i] = 0;
