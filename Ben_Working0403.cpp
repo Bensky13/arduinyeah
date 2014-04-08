@@ -26,8 +26,11 @@ void setup()
     
     Serial.println("Ready!");
      
-  
- 
+  //sets everything in the array equal to blank
+ for(int i=0; i<5; i++)
+        {
+            id_array[i] = "";
+        }
   
 }
 
@@ -119,7 +122,7 @@ void loop()
                   
                   //where does it get removed from the array if its a dup?
                   
-                /* Removed on 4/6 because I cant detect why this is necessary. 
+                // not sure if this is necessary 
                   for (int j = i; j < 4; j++)   //what purpose does j serve? Increments the search?
                   {
                      id_string[j] = id_string[j + 1]; 
@@ -127,7 +130,7 @@ void loop()
                      Serial.println(id_marker[i]);  //test print for the current marker. 
                   }
                   
-                  */
+                  
                   
                   index--;  //this might actually only subtract the last place, and not the proper location
                   space_left++;
@@ -147,19 +150,20 @@ void loop()
        
          {
             
-            /*
+            
             
             if (id_array[index] != "");   //if the array location is not blank, then
-        {
-            index ++;   //increment to the next spot
-        }
+            {
+                index ++;   //increment to the next spot
+                // index +=3;
+            }
         
-        if (i == 5);  //if we're at the 5th spot
-        {
-            i == 0; //start back at zero
-        }
+            if (i == 5);  //if we're at the 5th spot
+            {
+                i = 0; //start back at zero
+            }
         
-        */
+        
             
              //this needs to be able to detect black values
              id_array[index] = id_string;
