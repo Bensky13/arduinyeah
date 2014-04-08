@@ -155,7 +155,7 @@ void loop()
             if (id_array[index] != "");   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
-                // index +=3;
+                 //index +=2;
             }
         
             if (i == 5);  //if we're at the 5th spot
@@ -170,7 +170,7 @@ void loop()
              id_marker[index]++;
       
              space_left--;
-             index ++;
+             
           }
 
        }
