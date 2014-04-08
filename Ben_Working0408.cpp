@@ -19,7 +19,12 @@ void setup()
     RFID.begin(9600); // start serial to RFID reader
     Serial.begin(9600); // start serial to PC
     lcd.begin(16, 2);
-    //lcd.print("Ready!");  //test code for the LCD
+    //lcd output
+        lcd.clear();
+        lcd.print("There are "); //start printing the result
+        lcd.print(space_left); //then how many spaces
+        lcd.print("  spaces left."); //words
+        lcd.println(" "); //spaces
     
     for (int i = 0; i < 5; i++)
        id_marker[i] = 0;
@@ -185,9 +190,10 @@ void loop()
         Serial.println(" "); //spaces
         
         //lcd output
+        lcd.clear();
         lcd.print("There are "); //start printing the result
         lcd.print(space_left); //then how many spaces
-        lcd.print(" spaces left."); //words
+        lcd.print("  spaces left."); //words
         lcd.println(" "); //spaces
         
         for(int i=0; i<5; i++)
