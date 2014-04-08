@@ -77,7 +77,7 @@ void loop()
         Serial.print("\nid_string is now "); 
         Serial.print(id_string); 
         
-        i++; 
+        i++; //counts up unil 14
       }
       
       
@@ -85,34 +85,10 @@ void loop()
       //TESTING OUTPUT
       Serial.print("\nid_string is now ");
       Serial.print(id_string);
-      
-      
-      
-      
-
-      
-      //id_string += tag_id; //adds each character (ultimately, the whole tag) to id_string
-      //id_array[index] = id_string;
-      //id_marker[index]++;
-      //index++;   
         
         
         for(int i=0; i<5; i++)
         {
-            
-        
-        /*
-            //Moved to the land down under
-              //TEST OUTPUT: DISPLAY ARRAY
-              Serial.print("\nid_array[");
-              Serial.print(i);
-              Serial.print("] = ");
-              Serial.print(id_array[i]);
-              Serial.print("\nid_string is ");
-              Serial.print(id_string);
-            //This should ultimately be after the final read/print action so we can get relevant data
-            
-            */
               
            if(id_string == id_array[i]) //if the id matches something in the array at location "i"
            {
@@ -127,7 +103,6 @@ void loop()
                  // space_left++; //this isnt properly increasing the spaces left
                   //Commented out space left above because theres also one below.
                   
-                  //where does it get removed from the array if its a dup?
                   
                 // not sure if this is necessary 
                   for (int j = i; j < 4; j++)   //what purpose does j serve? Increments the search?
