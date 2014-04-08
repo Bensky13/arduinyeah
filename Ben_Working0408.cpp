@@ -27,7 +27,9 @@ void setup()
         lcd.println(" "); //spaces
     
     for (int i = 0; i < 5; i++)
+    {
        id_marker[i] = 0;
+    }
     
     Serial.println("Ready!");
      
