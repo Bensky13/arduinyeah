@@ -127,12 +127,8 @@ void loop()
         
         
         //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
-         if (no_match == 0)
-
-       
-         {
-            
-            
+        if (no_match == 0)
+        {
             if (id_array[index] != "");   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
@@ -142,20 +138,13 @@ void loop()
             {
                 i = 0; //start back at zero
             }
-        
-        
-            
              //this needs to be able to detect black values
              id_array[index] = id_string;
              id_marker[index]++;
-      
-             space_left--;
-             
-          }
+             space_left--;  
+        }
 
-       }
-        
-                
+    }
         
         Serial.println(" "); // prints a space
         Serial.println(id_array[index]); // print the array item
@@ -174,9 +163,6 @@ void loop()
         
         for(int i=0; i<5; i++)
         {
-            
-            
-            
               //TEST OUTPUT: DISPLAY ARRAY. I put this here because its more accurate
               Serial.print("\nid_array[");
               Serial.print(i);
@@ -184,13 +170,10 @@ void loop()
               Serial.print(id_array[i]);
               //Serial.print("\nid_string is ");
               //Serial.print(id_string);
-            
         }
-        
         bytesRead = 0; // reset variable to zero so it can read again
         no_match = 0; 
         id_string = String(""); //clear out the string
-      
 }
 
 
