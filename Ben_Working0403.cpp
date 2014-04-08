@@ -151,7 +151,6 @@ void loop()
          {
             
             
-            
             if (id_array[index] != "");   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
