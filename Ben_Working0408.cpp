@@ -87,7 +87,7 @@ void loop()
       Serial.print(id_string);
         
         
-        for(int i=0; i<5; i++)
+        for(int i=0; i<5; i++)  //first we check to see if there are any current matches
         {
               
            if(id_string == id_array[i]) //if the id matches something in the array at location "i"
@@ -136,7 +136,6 @@ void loop()
             if (id_array[index] != "");   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
-                 //index +=2;
             }
         
             if (i == 5);  //if we're at the 5th spot
