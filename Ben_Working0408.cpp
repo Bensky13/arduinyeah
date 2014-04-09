@@ -5,6 +5,8 @@ LiquidCrystal lcd(12, 11, 5, 4, 7, 8); //Testing code for pin switch
 SoftwareSerial RFID(2, 3); // RX and TX
 //SoftwareSerial RFID(8, 9); // Testing code for pin switch
 
+//If the array is full, and a tag is removed and readded, it overwrites the first tag. 
+
 char tag_id;
 String id_string = "";
 String id_array[5];
