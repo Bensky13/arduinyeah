@@ -103,7 +103,7 @@ void loop()
                         Serial.println(id_marker[i]);  //test print for the current marker. 
                     }
                     
-                    index--;  //this might actually only subtract the last place, and not the proper location
+                    //index--;  //this might actually only subtract the last place, and not the proper location
                     space_left++;
                     no_match = 1;
                 }
