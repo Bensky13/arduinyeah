@@ -83,7 +83,7 @@ void loop()
         for(int i=0; i<5; i++)  //first we check to see if there are any current matches
         {
         
-            if(id_string == id_array[i]) //if the id matches something in the array at location "i"
+            if(id_string == id_array[index]) //if the id matches something in the array at location "i"
             {
                 Serial.println("Match"); //print that it matches.
                 id_array[index] = "";    //set the array location of the removed tag to blank
