@@ -86,7 +86,7 @@ void loop()
             if(id_string == id_array[i]) //if the id matches something in the array at location "i"
             {
                 Serial.println("Match"); //print that it matches.
-                id_array[i] = "";    //set the array location of the removed tag to blank
+                id_array[index] = "";    //set the array location of the removed tag to blank
                 
                 if (id_marker[i] == 1)  //if the id marker is equal to one
                 //else //Removing this else because I dont think it makes sense. 
@@ -118,11 +118,12 @@ void loop()
             if (id_array[index] != "")   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
+                Serial.println(i);
             }
             
-            if (i == 5)  //if we're at the 5th spot
+            if (index == 5)  //if we're at the 5th spot
             {
-                i = 0; //start back at zero
+                index = 0; //start back at zero
             }
             //this needs to be able to detect black values
             id_array[index] = id_string;
