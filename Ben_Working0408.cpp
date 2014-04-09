@@ -40,11 +40,6 @@ void setup()
         }
   
 }
-
-
-//It's always overwriting the second value in the array
-
-
 void loop()
 {
     int i;
@@ -79,9 +74,7 @@ void loop()
         
         i++; //counts up unil 14
       }
-      
-      
-      
+        
       //TESTING OUTPUT
       Serial.print("\nid_string is now ");
       Serial.print(id_string);
@@ -122,9 +115,6 @@ void loop()
            }
 
         }//End of for loop
-        
-        
-        
         
         //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
         if (no_match == 0)
@@ -175,8 +165,3 @@ void loop()
         no_match = 0; 
         id_string = String(""); //clear out the string
 }
-
-
-//we need general output code for the LCD. Once we have this, we can put whatever we want in it. lcd.print
-//We need code to store the tag info in an array
-//LCD needs to display available spots in the array
