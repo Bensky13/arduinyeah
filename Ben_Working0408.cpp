@@ -80,7 +80,7 @@ void loop()
         Serial.print(id_string);
         
         
-        for(int i=0; i<5; i++)  //first we check to see if there are any current matches
+        for(int index=0; index<5; index++)  //first we check to see if there are any current matches
         {
         
             if(id_string == id_array[index]) //if the id matches something in the array at location "i"
