@@ -11,7 +11,6 @@ char tag_id;
 String id_string = "";
 String id_array[5];
 int id_marker[5];
-int bytesRead = 0;
 int index = 0;
 int no_match = 0;
 int space_left = 5;
@@ -45,8 +44,6 @@ void setup()
 void loop()
 {
     int i;
-    bytesRead = 0; //I think this is now not needed, haven't tested yet
-    
     while (RFID.available() <= 0); // force wait until rfid present
     
     if(RFID.available() > 0) //does rfid exist?
@@ -63,8 +60,6 @@ void loop()
                 continue;
             
             id_string = String(id_string + tag_id); //Make it a string
-            
-            bytesRead ++;
             
             //TESTING OUTPUT
             
@@ -160,7 +155,6 @@ void loop()
           //Serial.print("\nid_string is ");
           //Serial.print(id_string);
     }
-    bytesRead = 0; // reset variable to zero so it can read again
     no_match = 0; 
     id_string = String(""); //clear out the string
 }
