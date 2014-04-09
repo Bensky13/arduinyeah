@@ -88,7 +88,7 @@ void loop()
                 Serial.println("Match"); //print that it matches.
                 id_array[index] = "";    //set the array location of the removed tag to blank
                 
-                if (id_marker[i] == 1)  //if the id marker is equal to one
+                if (id_marker[index] == 1)  //if the id marker is equal to one
                 //else //Removing this else because I dont think it makes sense. 
                 {
                     // space_left++; //this isnt properly increasing the spaces left
@@ -96,11 +96,11 @@ void loop()
                     
                     
                     // not sure if this is necessary 
-                    for (int j = i; j < 4; j++)   //what purpose does j serve? Increments the search?
+                    for (int j = index; j < 4; j++)   //what purpose does j serve? Increments the search?
                     {
                         id_string[j] = id_string[j + 1]; 
                         id_marker[j] = id_marker[j + 1];
-                        Serial.println(id_marker[i]);  //test print for the current marker. 
+                        Serial.println(id_marker[index]);  //test print for the current marker. 
                     }
                     
                     index--;  //this might actually only subtract the last place, and not the proper location
