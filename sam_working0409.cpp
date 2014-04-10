@@ -11,7 +11,7 @@ char tag_id;
 String id_string = "";
 String id_array[5];
 int id_marker[5];
-int bytesRead = 0;
+//int bytesRead = 0;
 int index = 0;
 int no_match = 0;
 int space_left = 5;
@@ -107,10 +107,13 @@ void loop()
                         Serial.println(id_marker[index]);  //test print for the current marker. 
                     }
                     
+
                     index--;  //this might actually only subtract the last place, and not the proper location
                     space_left++;
                     no_match = 1;
                 }
+                
+
             
             }
         
@@ -127,7 +130,7 @@ void loop()
             
             if (index == 5)  //if we're at the 5th spot
             {
-                index = 0; //start back at zero
+                index = id_marker[index]; //start back at zero
             }
             //this needs to be able to detect black values
             id_array[index] = id_string;
