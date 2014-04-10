@@ -3,6 +3,7 @@
 LiquidCrystal lcd(12, 11, 5, 4, 7, 8); //Declaring pins
 SoftwareSerial RFID(2, 3); // RX and TX
 
+//Declare Variables
 char tag_id;
 String id_string = "";
 String id_array[5];
@@ -11,18 +12,20 @@ int index = 0;
 int no_match = 0;
 int space_left = 5;
 
+//Arduino Setup
 void setup()
 {
-    RFID.begin(9600); // start serial to RFID reader
-    Serial.begin(9600); // start serial to PC
-    lcd.begin(16, 2);
-    //lcd output
-        lcd.clear();
-        lcd.print("There are "); //start printing the result
-        lcd.print(space_left); //then how many spaces
-        lcd.print("  spaces left."); //words
-        lcd.println(" "); //spaces
+    RFID.begin(9600); //Start serial to RFID reader
+    Serial.begin(9600); //Start serial to PC
+    lcd.begin(16, 2); //Set rows and columns on LCD
     
+    //Initial LCD Output
+    lcd.clear();
+    lcd.print("There are "); //start printing the result
+    lcd.print(space_left); //then how many spaces
+    lcd.println("  spaces left."); //words
+    
+    //Set Marker
     for (int i = 0; i < 5; i++)
     {
        id_marker[i] = 0;
@@ -30,13 +33,15 @@ void setup()
     
     Serial.println("Ready!");
      
-  //sets everything in the array equal to blank
+    //Sets everything in the array equal to blank
     for(int i=0; i<5; i++)
     {
-            id_array[i] = String("");
+        id_array[i] = String("");
     }
   
 }
+
+//Read card, handle array, output to LCD
 void loop()
 {
     int i;
@@ -49,17 +54,20 @@ void loop()
         while (i < 14)
         {
         
-            tag_id = RFID.read(); //Reads character, puts into tag_id    
+            tag_id = RFID.read(); //Reads character, puts into tag_id
+            
             if (tag_id == '-1')  //Wait for scan to read
                 continue;
+            
             id_string = String(id_string + tag_id); //Make it a string
             
+            //Internal testing, not seen by user
             Serial.print("Read:  "); 
             Serial.print(tag_id);
             Serial.print("\nid_string is now "); 
             Serial.print(id_string); 
             
-            i++; //counts up unil 14
+            i++; //counts up until 14
         }
             
         //TESTING OUTPUT
@@ -70,48 +78,28 @@ void loop()
         for(int index=0; index<5; index++)  //first we check to see if there are any current matches
         {
         
-            if(id_string == id_array[index]) //if the id matches something in the array at location "i"
+            if(id_string == id_array[index]) //if the id matches another tag in the array
             {
                 Serial.println("Match"); //print that it matches.
                 id_array[index] = String("");    //set the array location of the removed tag to blank
-                Serial.print("This is the index:");
-                Serial.println(index);
-                
-                /*
-                if (id_marker[index] == 1)  //if the id marker is equal to one
-                //else //Removing this else because I dont think it makes sense. 
-                {
-                    // not sure how this works
-                    for (int j = index; j < 4; j++)   //what purpose does j serve? Increments the search?
-                    {
-                        id_string[j] = id_string[j + 1]; 
-                        id_marker[j] = id_marker[j + 1];
-                        Serial.println(id_marker[index]);  //test print for the current marker. 
-                    }
-                 */   
-
-                    index--;  //this might actually only subtract the last place, and not the proper location
-                    space_left++;
-                    no_match = 1;
-                //}         
+                  
+                index--;  //this might actually only subtract the last place, and not the proper location
+                space_left++;
+                no_match = 1;
             }
-        
-        }//End of for loop
+        }
             
-        //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
         if (no_match == 0)
         {
             for (index = 0; index < 5; index++)
-            if (id_array[index] == String(""))   //if the array location is not blank, then
+            if (id_array[index] == String(""))   //if the array location is blank, move on
             {
-                break;   //increment to the next spot
-                //Serial.println(i);
+                break;
             }
             
             if (index == 5)  //if we're at the 5th spot
             {
-                Serial.println("This parking lot is full");
-                //index = id_marker[index]; //start back at zero
+                Serial.println("The lot is full");
             }
             else
             {
@@ -123,30 +111,30 @@ void loop()
         }
     
     }
-        
+    
+    //Internal testing output, not seen by user
     Serial.println(" "); // prints a space
     Serial.println(id_array[index]); // print the array item
     Serial.println("Finished Reading ID."); //prints out this on a line
     Serial.print("There are "); //start printing the result
     Serial.print(space_left); //then how many spaces
     Serial.println(" spaces left."); //words
-    //Serial.println(" "); //spaces
     
-    //lcd output
+    //LCD output, seen by user
     lcd.clear();
     lcd.print("There are "); //start printing the result
     lcd.print(space_left); //then how many spaces
     lcd.println("  spaces left."); //words
-    //lcd.println("\0"); //spaces
     
+    //Testing output, display array, not seen by user
     for(int i=0; i<5; i++)
     {
-          //TEST OUTPUT: DISPLAY ARRAY. I put this here because its more accurate
           Serial.print("\nid_array[");
           Serial.print(i);
           Serial.print("] = ");
           Serial.print(id_array[i]);
     }
+    //Reset Variables
     no_match = 0; 
     id_string = String(""); //clear out the string
 }
