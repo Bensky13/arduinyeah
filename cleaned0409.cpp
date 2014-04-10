@@ -119,11 +119,20 @@ void loop()
     Serial.print(space_left); //then how many spaces
     Serial.println(" spaces left."); //words
     
-    //LCD output, seen by user
-    lcd.clear();
-    lcd.print("There are "); //start printing the result
-    lcd.print(space_left); //then how many spaces
-    lcd.println("  spaces left."); //words
+    if (space_left == 0)
+    {
+        lcd.clear();
+        lcd.print("Sorry, Lot Full!");
+    }
+    
+    else
+    {
+        //LCD output, seen by user
+        lcd.clear();
+        lcd.print("There are "); //start printing the result
+        lcd.print(space_left); //then how many spaces
+        lcd.println("  spaces left."); //words
+    }
     
     //Testing output, display array, not seen by user
     for(int i=0; i<5; i++)
