@@ -23,7 +23,7 @@ void setup()
     lcd.clear();
     lcd.print("There are "); //start printing the result
     lcd.print(space_left); //then how many spaces
-    lcd.print("  spaces left."); //words
+    lcd.print(" spaces  left."); //words
     
     //Set Marker
     for (int i = 0; i < 5; i++)
@@ -131,7 +131,7 @@ void loop()
         lcd.clear();
         lcd.print("There are "); //start printing the result
         lcd.print(space_left); //then how many spaces
-        lcd.print("  spaces left."); //words
+        lcd.print(" spaces  left."); //words
     }
     
     //Testing output, display array, not seen by user
