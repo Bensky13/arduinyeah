@@ -83,7 +83,7 @@ void loop()
                 Serial.println("Match"); //print that it matches.
                 id_array[index] = String("");    //set the array location of the removed tag to blank
                   
-                index--;  //this might actually only subtract the last place, and not the proper location
+                index--;
                 space_left++;
                 no_match = 1;
             }
@@ -103,7 +103,6 @@ void loop()
             }
             else
             {
-                //this needs to be able to detect black values
                 id_array[index] = id_string;
                 id_marker[index]++;
                 space_left--;
