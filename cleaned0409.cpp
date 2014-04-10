@@ -77,6 +77,7 @@ void loop()
                 Serial.print("This is the index:");
                 Serial.println(index);
                 
+                /*
                 if (id_marker[index] == 1)  //if the id marker is equal to one
                 //else //Removing this else because I dont think it makes sense. 
                 {
@@ -87,12 +88,12 @@ void loop()
                         id_marker[j] = id_marker[j + 1];
                         Serial.println(id_marker[index]);  //test print for the current marker. 
                     }
-                    
+                 */   
 
                     index--;  //this might actually only subtract the last place, and not the proper location
                     space_left++;
                     no_match = 1;
-                }         
+                //}         
             }
         
         }//End of for loop
@@ -100,20 +101,25 @@ void loop()
         //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
         if (no_match == 0)
         {
-            if (id_array[index] != String(""))   //if the array location is not blank, then
+            for (index = 0; index < 5; index++)
+            if (id_array[index] == String(""))   //if the array location is not blank, then
             {
-                index ++;   //increment to the next spot
+                break;   //increment to the next spot
                 //Serial.println(i);
             }
             
             if (index == 5)  //if we're at the 5th spot
             {
-                index = id_marker[index]; //start back at zero
+                Serial.println("This parking lot is full");
+                //index = id_marker[index]; //start back at zero
             }
-            //this needs to be able to detect black values
-            id_array[index] = id_string;
-            id_marker[index]++;
-            space_left--;  
+            else
+            {
+                //this needs to be able to detect black values
+                id_array[index] = id_string;
+                id_marker[index]++;
+                space_left--;
+            }
         }
     
     }
@@ -123,15 +129,15 @@ void loop()
     Serial.println("Finished Reading ID."); //prints out this on a line
     Serial.print("There are "); //start printing the result
     Serial.print(space_left); //then how many spaces
-    Serial.print(" spaces left."); //words
-    Serial.println(" "); //spaces
+    Serial.println(" spaces left."); //words
+    //Serial.println(" "); //spaces
     
     //lcd output
     lcd.clear();
     lcd.print("There are "); //start printing the result
     lcd.print(space_left); //then how many spaces
-    lcd.print("  spaces left."); //words
-    lcd.println(" "); //spaces
+    lcd.println("  spaces left."); //words
+    //lcd.println("\0"); //spaces
     
     for(int i=0; i<5; i++)
     {
