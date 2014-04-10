@@ -37,7 +37,7 @@ void setup()
   //sets everything in the array equal to blank
  for(int i=0; i<5; i++)
         {
-            id_array[i] = "";
+            id_array[i] = String("");
         }
   
 }
@@ -83,7 +83,7 @@ void loop()
             if(id_string == id_array[index]) //if the id matches something in the array at location "i"
             {
                 Serial.println("Match"); //print that it matches.
-                id_array[index] = "";    //set the array location of the removed tag to blank
+                id_array[index] = String("");    //set the array location of the removed tag to blank
                 
                 if (id_marker[index] == 1)  //if the id marker is equal to one
                 //else //Removing this else because I dont think it makes sense. 
@@ -112,7 +112,7 @@ void loop()
         //I added the ifs below to attempt to refine the location of the write location in the array. they dont work completely
         if (no_match == 0)
         {
-            if (id_array[index] != "")   //if the array location is not blank, then
+            if (id_array[index] != String(""))   //if the array location is not blank, then
             {
                 index ++;   //increment to the next spot
                 Serial.println(i);
