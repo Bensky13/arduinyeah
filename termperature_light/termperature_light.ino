@@ -1,6 +1,10 @@
+//Temperature and Light Sensor Weather Station
+//Sam Rabe and Ben Mace
+//April 16, 2014
+
 #include <SoftwareSerial.h>
 #include <LiquidCrystal.h>
-LiquidCrystal lcd(12, 11, 5, 4, 7, 8); //Declaring pins
+LiquidCrystal lcd(12, 11, 5, 4, 7, 8); //Declare pins
 
 //Declare Variables
 int temperaturePin = 0; 
@@ -14,6 +18,7 @@ void setup()
 }
 
 //Read Temperature and Light Sensor
+//Print to Serial for testing
 void loop()
 {
     int reading = analogRead(temperaturePin);  
@@ -31,6 +36,7 @@ void loop()
     Serial.print("Light Reading = ");
     Serial.print(photocellReading);
     
+    //Print on LCD
     lcd.clear();
     lcd.print("Temperature:");
     lcd.print(temperatureF); lcd.print(" F");
